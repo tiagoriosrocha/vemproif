@@ -110,7 +110,7 @@
                         <div class="mb-2">
                                 <label for="telefone" class="form-label text-success">Qual o seu Fone/WhatsApp?</label>
                                 <!-- <input type="text" v-on:keyup.enter="validarTelefone" class="form-control" id="telefone" required v-model="telefone"> -->
-                                <the-mask type="text" v-on:keyup.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"  :masked="true" placeholder="Digite seu telefone com DDD"></the-mask>
+                                <the-mask type="text" v-on:keyup.native.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"  :masked="true" placeholder="Digite seu telefone com DDD"></the-mask>
                                 <div v-if="semTelefone" class="alert alert-danger">{{ msgErro }}</div>
                         </div>
                         

@@ -44178,7 +44178,7 @@ var render = function () {
                           masked: true,
                           placeholder: "Digite seu telefone com DDD",
                         },
-                        on: {
+                        nativeOn: {
                           keyup: function ($event) {
                             if (
                               !$event.type.indexOf("key") &&
