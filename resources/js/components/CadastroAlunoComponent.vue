@@ -230,6 +230,8 @@
                         <div class="row justify-content-center">
                             <p>Salvo com sucesso!!!</p>
                             <a class="btn btn-sm btn-success" href="http://ibiruba.ifrs.edu.br">Visite nosso site</a>
+                            
+                            <a class="btn btn-sm btn-success mt-2" @click="novoCadastro">Fazer novo cadastro</a>
                         </div>
                     </div>
                 </div>
@@ -244,7 +246,7 @@
         data() {
             return {
                 'titulo' : "#VemProIF 2022",
-                'parte' : 0,
+                'parte' : 7,
                 'nome' : "",
                 'email' : "",
                 'telefone' : "",
@@ -379,6 +381,16 @@
 
             validaCurso(){
                 this.avancar()
+            },
+
+            novoCadastro(){
+                this.parte = 0
+                this.nome = ""
+                this.telefone = ""
+                this.email = ""
+                this.tipoSelecionado = 1
+                this.listagemCursos = []
+
             }
         }
     }

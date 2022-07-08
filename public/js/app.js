@@ -20639,11 +20639,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       'titulo': "#VemProIF 2022",
-      'parte': 0,
+      'parte': 7,
       'nome': "",
       'email': "",
       'telefone': "",
@@ -20798,6 +20800,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     validaCurso: function validaCurso() {
       this.avancar();
+    },
+    novoCadastro: function novoCadastro() {
+      this.parte = 0;
+      this.nome = "";
+      this.telefone = "";
+      this.email = "";
+      this.tipoSelecionado = 1;
+      this.listagemCursos = [];
     }
   }
 });
@@ -44577,7 +44587,29 @@ var render = function () {
                   ]),
                 ]),
                 _vm._v(" "),
-                _vm._m(6),
+                _c("div", { staticClass: "card-body" }, [
+                  _c("div", { staticClass: "row justify-content-center" }, [
+                    _c("p", [_vm._v("Salvo com sucesso!!!")]),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-success",
+                        attrs: { href: "http://ibiruba.ifrs.edu.br" },
+                      },
+                      [_vm._v("Visite nosso site")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-success mt-2",
+                        on: { click: _vm.novoCadastro },
+                      },
+                      [_vm._v("Fazer novo cadastro")]
+                    ),
+                  ]),
+                ]),
               ]
             ),
           ]),
@@ -44659,25 +44691,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-4 text-end" }, [
       _c("span", { staticClass: "badge bg-success text-white rounded-pill" }, [
         _vm._v("5/5"),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("p", [_vm._v("Salvo com sucesso!!!")]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-sm btn-success",
-            attrs: { href: "http://ibiruba.ifrs.edu.br" },
-          },
-          [_vm._v("Visite nosso site")]
-        ),
       ]),
     ])
   },
