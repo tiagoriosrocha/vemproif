@@ -5,8 +5,8 @@
         <div class="row  justify-content-center">
             <div class="col-md-10 text-center  shadow-lg rounded p-3 mb-3" style="background-color:white">   
                 <h2>
-                    <span class="badge badge-lg bg-dark text-white">#VemProIF-2022</span> 
-                    <br>Lista de Candidatos Inscritos</h2>
+                    <span class="badge bg-dark text-white">#VemProIF-2022</span> 
+                    <br>Lista de Inscritos</h2>
                 </h2>
             </div>
         </div>
@@ -28,8 +28,8 @@
                 @foreach($candidatos as $candidato)
                     <tr>
                     <th scope="row">{{$candidato->id}}</th>
-                    <td>{{$candidato->nome}}</td>
-                    <td>{{$candidato->email}}</td>
+                    <td>{{ strtoupper($candidato->nome) }}</td>
+                    <td>{{ strtolower($candidato->email) }}</td>
                     <td>{{$candidato->telefone}}</td>
                     <td>{{$candidato->nivel_curso}}</td>
                     <td>{{$candidato->curso}}</td>

@@ -229,7 +229,7 @@
                     <div class="card-body">
                         <div class="row justify-content-center">
                             <p>Salvo com sucesso!!!</p>
-                            <a class="btn btn-sm btn-success" href="http://ibiruba.ifrs.edu.br">Visite nosso site</a>
+                            <a class="btn btn-sm btn-success" href="https://ifrs.edu.br/ibiruba/">Visite nosso site</a>
                             
                             <a class="btn btn-sm btn-success mt-2" @click="novoCadastro">Fazer novo cadastro</a>
                         </div>

@@ -44613,7 +44613,7 @@ var render = function () {
                       "a",
                       {
                         staticClass: "btn btn-sm btn-success",
-                        attrs: { href: "http://ibiruba.ifrs.edu.br" },
+                        attrs: { href: "https://ifrs.edu.br/ibiruba/" },
                       },
                       [_vm._v("Visite nosso site")]
                     ),
