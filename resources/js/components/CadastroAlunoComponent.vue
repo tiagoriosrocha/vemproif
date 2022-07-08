@@ -15,11 +15,12 @@
                     <div class="card-body">
                         <div class="mb-2">
                             <p>Olá,</p>
-                            <p>Seja muito bem-vindo(a) ao #vemproIF - 2022!!</p>
+                            <p>Seja muito bem-vindo(a) ao:</p>
+                            <p class="text-center fs-2">#vemproIF - 2022!!</p>
                             
                             <p>Faça seu cadastro para receber notícias do próximo processo seletivo.</p>
                             
-                            <p>Note: Este cadastro não implica na realização de sua inscrição.</p>
+                            <div class="alert alert-secondary">Atenção: Este cadastro não implica na realização de sua inscrição.</div>
                         </div>
                         
                         <div class="mb-12 text-end">
@@ -109,7 +110,7 @@
                         <div class="mb-2">
                                 <label for="telefone" class="form-label text-success">Qual o seu Fone/WhatsApp?</label>
                                 <!-- <input type="text" v-on:keyup.enter="validarTelefone" class="form-control" id="telefone" required v-model="telefone"> -->
-                                <the-mask type="text" v-on:keyup.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"></the-mask>
+                                <the-mask type="text" v-on:keyup.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"  :masked="true"></the-mask>
                                 <div v-if="semTelefone" class="alert alert-danger">{{ msgErro }}</div>
                         </div>
                         
@@ -243,10 +244,10 @@
         data() {
             return {
                 'titulo' : "#VemProIF 2022",
-                'parte' : 3,
+                'parte' : 0,
                 'nome' : "Tiago Rios da Rocha",
                 'email' : "tiago.rios@ibiruba.ifrs.edu.br",
-                'telefone' : "(55)99999-5505",
+                'telefone' : "55999995505",
                 'semNome' : false,
                 'semTelefone' : false,
                 'semEmail' : false,

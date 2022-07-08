@@ -20638,14 +20638,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       'titulo': "#VemProIF 2022",
-      'parte': 3,
+      'parte': 0,
       'nome': "Tiago Rios da Rocha",
       'email': "tiago.rios@ibiruba.ifrs.edu.br",
-      'telefone': "(55)99999-5505",
+      'telefone': "55999995505",
       'semNome': false,
       'semTelefone': false,
       'semEmail': false,
@@ -44130,6 +44131,7 @@ var render = function () {
                           id: "telefone",
                           required: "",
                           mask: ["(##) ####-####", "(##) #####-####"],
+                          masked: true,
                         },
                         on: {
                           keyup: function ($event) {
@@ -44546,7 +44548,11 @@ var staticRenderFns = [
     return _c("div", { staticClass: "mb-2" }, [
       _c("p", [_vm._v("Olá,")]),
       _vm._v(" "),
-      _c("p", [_vm._v("Seja muito bem-vindo(a) ao #vemproIF - 2022!!")]),
+      _c("p", [_vm._v("Seja muito bem-vindo(a) ao:")]),
+      _vm._v(" "),
+      _c("p", { staticClass: "text-center fs-2" }, [
+        _vm._v("#vemproIF - 2022!!"),
+      ]),
       _vm._v(" "),
       _c("p", [
         _vm._v(
@@ -44554,9 +44560,9 @@ var staticRenderFns = [
         ),
       ]),
       _vm._v(" "),
-      _c("p", [
+      _c("div", { staticClass: "alert alert-secondary" }, [
         _vm._v(
-          "Note: Este cadastro não implica na realização de sua inscrição."
+          "Atenção: Este cadastro não implica na realização de sua inscrição."
         ),
       ]),
     ])
