@@ -20644,9 +20644,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       'titulo': "#VemProIF 2022",
       'parte': 0,
-      'nome': "Tiago Rios da Rocha",
-      'email': "tiago.rios@ibiruba.ifrs.edu.br",
-      'telefone': "55999995505",
+      'nome': "",
+      'email': "",
+      'telefone': "",
       'semNome': false,
       'semTelefone': false,
       'semEmail': false,
@@ -20743,7 +20743,22 @@ __webpack_require__.r(__webpack_exports__);
       this.avancar();
     },
     salvar: function salvar() {
-      this.avancar();
+      var _this = this;
+
+      axios.post('/candidato', {
+        'nome': this.nome,
+        'email': this.email,
+        'telefone': this.telefone,
+        'nivel': this.nivelNome,
+        'curso': this.cursoSelecionado
+      }).then(function (response) {
+        var candidato = response.data;
+        console.log("Axios - Candidato salvo com sucesso");
+
+        _this.avancar();
+      })["catch"](function (error) {
+        return console.log("Axios - resposta erro: " + error);
+      });
     },
     avancar: function avancar() {
       this.parte++;
@@ -20797,12 +20812,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
-/* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
-/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.esm.min.js");
+/* harmony import */ var _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/fontawesome-svg-core */ "./node_modules/@fortawesome/fontawesome-svg-core/index.es.js");
+/* harmony import */ var _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/vue-fontawesome */ "./node_modules/@fortawesome/vue-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20814,12 +20830,13 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 
 
 
+
  //import  VueMask   from 'v-mask';
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faUserSecret);
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPenToSquare);
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faTrash);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faUserSecret);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faPenToSquare);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faTrash);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20832,9 +20849,10 @@ _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_0__.library.add(_fort
 //Vue.component('frame-component', require('./components/FrameComponent.vue').default);
 //Vue.component('post-component', require('./components/PostComponent.vue').default);
 
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].component('cadastro-component', (__webpack_require__(/*! ./components/CadastroAlunoComponent.vue */ "./resources/js/components/CadastroAlunoComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_1__.FontAwesomeIcon);
-vue__WEBPACK_IMPORTED_MODULE_4__["default"].use((vue_the_mask__WEBPACK_IMPORTED_MODULE_2___default())); //Vue.use(VueMask)
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].component('cadastro-component', (__webpack_require__(/*! ./components/CadastroAlunoComponent.vue */ "./resources/js/components/CadastroAlunoComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon);
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vue_axios__WEBPACK_IMPORTED_MODULE_0__["default"], axios);
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].use((vue_the_mask__WEBPACK_IMPORTED_MODULE_3___default())); //Vue.use(VueMask)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20842,7 +20860,7 @@ vue__WEBPACK_IMPORTED_MODULE_4__["default"].use((vue_the_mask__WEBPACK_IMPORTED_
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_4__["default"]({
+var app = new vue__WEBPACK_IMPORTED_MODULE_5__["default"]({
   el: '#app'
 });
 
@@ -43739,6 +43757,22 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-axios/dist/vue-axios.esm.min.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue-axios/dist/vue-axios.esm.min.js ***!
+  \**********************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ plugin)
+/* harmony export */ });
+/* module decorator */ module = __webpack_require__.hmd(module);
+function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function plugin(e,n){if(!e.vueAxiosInstalled){var o=isAxiosLike(n)?migrateToMultipleInstances(n):n;if(isValidConfig(o)){var t=getVueVersion(e);if(t){var i=t<3?registerOnVue2:registerOnVue3;Object.keys(o).forEach((function(n){i(e,n,o[n])})),e.vueAxiosInstalled=!0}else console.error("[vue-axios] unknown Vue version")}else console.error("[vue-axios] configuration is invalid, expected options are either <axios_instance> or { <registration_key>: <axios_instance> }")}}function registerOnVue2(e,n,o){Object.defineProperty(e.prototype,n,{get:function(){return o}}),e[n]=o}function registerOnVue3(e,n,o){e.config.globalProperties[n]=o,e[n]=o}function isAxiosLike(e){return e&&"function"==typeof e.get&&"function"==typeof e.post}function migrateToMultipleInstances(e){return{axios:e,$http:e}}function isValidConfig(e){return"object"===_typeof(e)&&Object.keys(e).every((function(n){return isAxiosLike(e[n])}))}function getVueVersion(e){return e&&e.version&&Number(e.version.split(".")[0])}"object"==("undefined"==typeof exports?"undefined":_typeof(exports))?module.exports=plugin:"function"==typeof define&&__webpack_require__.amdO?define([],(function(){return plugin})):window.Vue&&window.axios&&window.Vue.use&&Vue.use(plugin,window.axios);
+
+/***/ }),
+
 /***/ "./resources/js/components/CadastroAlunoComponent.vue":
 /*!************************************************************!*\
   !*** ./resources/js/components/CadastroAlunoComponent.vue ***!
@@ -43929,7 +43963,12 @@ var render = function () {
                         },
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", id: "nome", required: "" },
+                      attrs: {
+                        type: "text",
+                        id: "nome",
+                        required: "",
+                        placeholder: "Digite aqui seu nome completo",
+                      },
                       domProps: { value: _vm.nome },
                       on: {
                         keyup: function ($event) {
@@ -44025,7 +44064,12 @@ var render = function () {
                         },
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", id: "email", required: "" },
+                      attrs: {
+                        type: "text",
+                        id: "email",
+                        required: "",
+                        placeholder: "Digite aqui seu e-mail",
+                      },
                       domProps: { value: _vm.email },
                       on: {
                         keyup: function ($event) {
@@ -44132,6 +44176,7 @@ var render = function () {
                           required: "",
                           mask: ["(##) ####-####", "(##) #####-####"],
                           masked: true,
+                          placeholder: "Digite seu telefone com DDD",
                         },
                         on: {
                           keyup: function ($event) {
@@ -56843,6 +56888,11 @@ Vue.compile = compileToFunctions;
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/amd options */
+/******/ 	(() => {
+/******/ 		__webpack_require__.amdO = {};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
 /******/ 		var deferred = [];
@@ -56909,6 +56959,21 @@ Vue.compile = compileToFunctions;
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/harmony module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.hmd = (module) => {
+/******/ 			module = Object.create(module);
+/******/ 			if (!module.children) module.children = [];
+/******/ 			Object.defineProperty(module, 'exports', {
+/******/ 				enumerable: true,
+/******/ 				set: () => {
+/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+/******/ 				}
+/******/ 			});
+/******/ 			return module;
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */

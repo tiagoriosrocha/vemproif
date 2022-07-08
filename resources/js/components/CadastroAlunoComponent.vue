@@ -49,7 +49,7 @@
                     <div class="card-body">
                         <div class="mb-2">
                                 <label for="nome" class="form-label text-success">Qual seu nome completo?</label>
-                                <input type="text" v-on:keyup.enter="validarNome" class="form-control" id="nome" required v-model="nome">
+                                <input type="text" v-on:keyup.enter="validarNome" class="form-control" id="nome" required v-model="nome" placeholder="Digite aqui seu nome completo">
                                 <div v-if="semNome" class="alert alert-danger">{{ msgErro }}</div>
                         </div>
                         
@@ -79,7 +79,7 @@
                     <div class="card-body">
                         <div class="mb-2">
                                 <label for="email" class="form-label text-success">Qual o seu e-mail?</label>
-                                <input type="text" v-on:keyup.enter="validarEmail" class="form-control" id="email" required v-model="email">
+                                <input type="text" v-on:keyup.enter="validarEmail" class="form-control" id="email" required v-model="email" placeholder="Digite aqui seu e-mail">
                                 <div v-if="semEmail" class="alert alert-danger">{{ msgErro }}</div>
                         </div>
                         
@@ -110,7 +110,7 @@
                         <div class="mb-2">
                                 <label for="telefone" class="form-label text-success">Qual o seu Fone/WhatsApp?</label>
                                 <!-- <input type="text" v-on:keyup.enter="validarTelefone" class="form-control" id="telefone" required v-model="telefone"> -->
-                                <the-mask type="text" v-on:keyup.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"  :masked="true"></the-mask>
+                                <the-mask type="text" v-on:keyup.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"  :masked="true" placeholder="Digite seu telefone com DDD"></the-mask>
                                 <div v-if="semTelefone" class="alert alert-danger">{{ msgErro }}</div>
                         </div>
                         
@@ -245,9 +245,9 @@
             return {
                 'titulo' : "#VemProIF 2022",
                 'parte' : 0,
-                'nome' : "Tiago Rios da Rocha",
-                'email' : "tiago.rios@ibiruba.ifrs.edu.br",
-                'telefone' : "55999995505",
+                'nome' : "",
+                'email' : "",
+                'telefone' : "",
                 'semNome' : false,
                 'semTelefone' : false,
                 'semEmail' : false,
@@ -323,7 +323,22 @@
                 this.avancar()
             },
             salvar(){
-                this.avancar()
+                axios.post('/candidato', {
+                    'nome': this.nome,
+                    'email': this.email,
+                    'telefone' : this.telefone,
+                    'nivel' : this.nivelNome,
+                    'curso' : this.cursoSelecionado
+                })
+                .then(response => {
+                    var candidato = response.data
+                    console.log("Axios - Candidato salvo com sucesso")
+                    this.avancar()    
+                })
+                .catch(error => (
+                    console.log("Axios - resposta erro: " + error)
+                ));
+                
             },
             avancar(){
                 this.parte++

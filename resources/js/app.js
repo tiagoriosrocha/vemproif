@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import VueAxios from 'vue-axios'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPenToSquare, faTrash, faUserSecret } from '@fortawesome/free-solid-svg-icons'
@@ -36,6 +37,7 @@ Vue.component('cadastro-component', require('./components/CadastroAlunoComponent
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
+Vue.use(VueAxios, axios);
 Vue.use(VueTheMask)
 //Vue.use(VueMask)
 
