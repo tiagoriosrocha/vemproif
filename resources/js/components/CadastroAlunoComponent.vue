@@ -108,7 +108,8 @@
                     <div class="card-body">
                         <div class="mb-2">
                                 <label for="telefone" class="form-label text-success">Qual o seu Fone/WhatsApp?</label>
-                                <input type="text" v-on:keyup.enter="validarTelefone" class="form-control" id="telefone" required v-model="telefone">
+                                <!-- <input type="text" v-on:keyup.enter="validarTelefone" class="form-control" id="telefone" required v-model="telefone"> -->
+                                <the-mask type="text" v-on:keyup.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"></the-mask>
                                 <div v-if="semTelefone" class="alert alert-danger">{{ msgErro }}</div>
                         </div>
                         

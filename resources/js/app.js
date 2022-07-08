@@ -11,6 +11,9 @@ window.Vue = require('vue').default;
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPenToSquare, faTrash, faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import  VueTheMask  from 'vue-the-mask'
+//import  VueMask   from 'v-mask';
+import Vue from 'vue';
 
 library.add(faUserSecret)
 library.add(faPenToSquare)
@@ -31,6 +34,10 @@ library.add(faTrash)
 //Vue.component('post-component', require('./components/PostComponent.vue').default);
 Vue.component('cadastro-component', require('./components/CadastroAlunoComponent.vue').default);
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
+Vue.use(VueTheMask)
+//Vue.use(VueMask)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
