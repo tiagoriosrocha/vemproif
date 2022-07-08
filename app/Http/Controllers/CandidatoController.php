@@ -14,7 +14,8 @@ class CandidatoController extends Controller
      */
     public function index()
     {
-        //
+        $candidatos = Candidato::all();
+        return view('candidato.list',["candidatos" => $candidatos]);
     }
 
     /**
@@ -43,8 +44,8 @@ class CandidatoController extends Controller
             $curso = $request->input('curso');
 
             $candidato = Candidato::create([
-                'nome' => $nome,
-                'email' => $email,
+                'nome' => strtoupper($nome),
+                'email' => strtolower($email),
                 'telefone' => $telefone,
                 'nivel_curso' => $nivel,
                 'curso' => $curso

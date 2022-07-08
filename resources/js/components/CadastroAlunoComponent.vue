@@ -50,11 +50,11 @@
                         <div class="mb-2">
                                 <label for="nome" class="form-label text-success">Qual seu nome completo?</label>
                                 <input type="text" v-on:keyup.enter="validarNome" class="form-control" id="nome" required v-model="nome" placeholder="Digite aqui seu nome completo">
-                                <div v-if="semNome" class="alert alert-danger">{{ msgErro }}</div>
+                                <span v-if="semNome" class="text-danger">{{ msgErro }}</span>
                         </div>
                         
                         <div class="mb-12 text-end">
-                            <button type="button" class="btn btn-success" @click="validarNome">Próximo</button>
+                            <button :disabled="nome.length < 6" type="button" class="btn btn-success" @click="validarNome">Próximo</button>
                         </div>
                     </div>
                 </div>
@@ -79,13 +79,13 @@
                     <div class="card-body">
                         <div class="mb-2">
                                 <label for="email" class="form-label text-success">Qual o seu e-mail?</label>
-                                <input type="text" v-on:keyup.enter="validarEmail" class="form-control" id="email" required v-model="email" placeholder="Digite aqui seu e-mail">
-                                <div v-if="semEmail" class="alert alert-danger">{{ msgErro }}</div>
+                                <input type="text" v-on:keyup="testaEmail" v-on:keyup.enter="validarEmail" class="form-control" id="email" required v-model="email" placeholder="Digite aqui seu e-mail">
+                                <span v-if="semEmail" class="text-danger">{{ msgErro }}</span>
                         </div>
                         
                         <div class="mb-12 text-end">
                             <button type="button" class="btn btn-success" @click="voltar">Retornar</button>
-                            <button type="button" class="btn btn-success" @click="validarEmail">Próximo</button>
+                            <button :disabled="emailInvalido" type="button" class="btn btn-success" @click="validarEmail">Próximo</button>
                         </div>
                     </div>
                 </div>
@@ -111,12 +111,12 @@
                                 <label for="telefone" class="form-label text-success">Qual o seu Fone/WhatsApp?</label>
                                 <!-- <input type="text" v-on:keyup.enter="validarTelefone" class="form-control" id="telefone" required v-model="telefone"> -->
                                 <the-mask type="text" v-on:keyup.native.enter="validarTelefone" class="form-control"  id="telefone"  required v-model="telefone"  :mask="['(##) ####-####', '(##) #####-####']"  :masked="true" placeholder="Digite seu telefone com DDD"></the-mask>
-                                <div v-if="semTelefone" class="alert alert-danger">{{ msgErro }}</div>
+                                <span v-if="semTelefone" class="text-danger">{{ msgErro }}</span>
                         </div>
                         
                         <div class="mb-12 text-end">
                             <button type="button" class="btn btn-success" @click="voltar">Retornar</button>
-                            <button type="button" class="btn btn-success" @click="validarTelefone">Próximo</button>
+                            <button :disabled="telefone.length < 14" type="button" class="btn btn-success" @click="validarTelefone">Próximo</button>
                         </div>
                     </div>
                 </div>
@@ -246,13 +246,14 @@
         data() {
             return {
                 'titulo' : "#VemProIF 2022",
-                'parte' : 7,
+                'parte' : 0,
                 'nome' : "",
                 'email' : "",
                 'telefone' : "",
                 'semNome' : false,
                 'semTelefone' : false,
                 'semEmail' : false,
+                'emailInvalido' : true,
                 'msgErro' : "",
                 'tipoCurso' : [
                     {name: "Cursos Integrados", id: 1}, 
@@ -322,7 +323,12 @@
                 }
             },
             validarTelefone(){
-                this.avancar()
+                if( this.telefone == "" || this.telefone.length < 14 ){
+                    this.semTelefone = true
+                    this.msgErro = "Preencha seu telefone com DDD"
+                }else{
+                    this.avancar()
+                }
             },
             salvar(){
                 axios.post('/candidato', {
@@ -356,6 +362,13 @@
                 }else{
                     return false
                 } 
+            },
+
+            testaEmail(){
+                if( this.validateEmail(this.email) )
+                    this.emailInvalido = false 
+                else
+                    this.emailInvalido = true
             },
 
             validarTipoCurso(){

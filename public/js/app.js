@@ -20645,13 +20645,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       'titulo': "#VemProIF 2022",
-      'parte': 7,
+      'parte': 0,
       'nome': "",
       'email': "",
       'telefone': "",
       'semNome': false,
       'semTelefone': false,
       'semEmail': false,
+      'emailInvalido': true,
       'msgErro': "",
       'tipoCurso': [{
         name: "Cursos Integrados",
@@ -20742,7 +20743,12 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     validarTelefone: function validarTelefone() {
-      this.avancar();
+      if (this.telefone == "" || this.telefone.length < 14) {
+        this.semTelefone = true;
+        this.msgErro = "Preencha seu telefone com DDD";
+      } else {
+        this.avancar();
+      }
     },
     salvar: function salvar() {
       var _this = this;
@@ -20774,6 +20780,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return false;
       }
+    },
+    testaEmail: function testaEmail() {
+      if (this.validateEmail(this.email)) this.emailInvalido = false;else this.emailInvalido = true;
     },
     validarTipoCurso: function validarTipoCurso() {
       switch (this.tipoSelecionado) {
@@ -44006,7 +44015,7 @@ var render = function () {
                     }),
                     _vm._v(" "),
                     _vm.semNome
-                      ? _c("div", { staticClass: "alert alert-danger" }, [
+                      ? _c("span", { staticClass: "text-danger" }, [
                           _vm._v(_vm._s(_vm.msgErro)),
                         ])
                       : _vm._e(),
@@ -44017,7 +44026,10 @@ var render = function () {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: {
+                          disabled: _vm.nome.length < 6,
+                          type: "button",
+                        },
                         on: { click: _vm.validarNome },
                       },
                       [_vm._v("Próximo")]
@@ -44082,21 +44094,24 @@ var render = function () {
                       },
                       domProps: { value: _vm.email },
                       on: {
-                        keyup: function ($event) {
-                          if (
-                            !$event.type.indexOf("key") &&
-                            _vm._k(
-                              $event.keyCode,
-                              "enter",
-                              13,
-                              $event.key,
-                              "Enter"
-                            )
-                          ) {
-                            return null
-                          }
-                          return _vm.validarEmail.apply(null, arguments)
-                        },
+                        keyup: [
+                          _vm.testaEmail,
+                          function ($event) {
+                            if (
+                              !$event.type.indexOf("key") &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
+                            return _vm.validarEmail.apply(null, arguments)
+                          },
+                        ],
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
@@ -44107,7 +44122,7 @@ var render = function () {
                     }),
                     _vm._v(" "),
                     _vm.semEmail
-                      ? _c("div", { staticClass: "alert alert-danger" }, [
+                      ? _c("span", { staticClass: "text-danger" }, [
                           _vm._v(_vm._s(_vm.msgErro)),
                         ])
                       : _vm._e(),
@@ -44128,7 +44143,7 @@ var render = function () {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { disabled: _vm.emailInvalido, type: "button" },
                         on: { click: _vm.validarEmail },
                       },
                       [_vm._v("Próximo")]
@@ -44215,7 +44230,7 @@ var render = function () {
                       }),
                       _vm._v(" "),
                       _vm.semTelefone
-                        ? _c("div", { staticClass: "alert alert-danger" }, [
+                        ? _c("span", { staticClass: "text-danger" }, [
                             _vm._v(_vm._s(_vm.msgErro)),
                           ])
                         : _vm._e(),
@@ -44238,7 +44253,10 @@ var render = function () {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: {
+                          disabled: _vm.telefone.length < 14,
+                          type: "button",
+                        },
                         on: { click: _vm.validarTelefone },
                       },
                       [_vm._v("Próximo")]

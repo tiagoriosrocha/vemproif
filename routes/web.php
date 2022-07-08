@@ -23,3 +23,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('candidato', [App\Http\Controllers\CandidatoController::class, 'store']);
+Route::get('/dados', [App\Http\Controllers\CandidatoController::class, 'index']);
